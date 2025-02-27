@@ -242,7 +242,7 @@ def handle_bgmi(message):
                                       f"🎯 **Target:** `{target}`\n"
                                       f"🚀 **Port:** `{port}`\n"
                                       f"⏳ **Duration:** `{time} seconds`\n"
-                                      f"🛠️ **Method:** `VIP USER OF @YourBot`\n\n"
+                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`\n\n"
                                       f"💪 *Mission Accomplished!* 🎯", 
                                       parse_mode="Markdown")
         else:
