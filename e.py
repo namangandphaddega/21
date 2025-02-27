@@ -228,10 +228,10 @@ def handle_bgmi(message):
                 
                 # Stylish attack start message
                 bot.reply_to(message, f"🔥 **ATTACK STARTED!** 🔥\n\n"
-                                      f"🎯 **Target:** `{target}`"
-                                      f"🚀 **Port:** `{port}`"
-                                      f"⏳ **Duration:** `{time} seconds`"
-                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`", 
+                                      f"🎯 **Target:** `{target}`\n\n"
+                                      f"🚀 **Port:** `{port}`/n/n"
+                                      f"⏳ **Duration:** `{time} seconds`\n\n"
+                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`\n\n", 
                                       parse_mode="Markdown")
 
                 full_command = f"./sahil {target} {port} {time}"
@@ -239,11 +239,11 @@ def handle_bgmi(message):
 
                 # Stylish attack completion message
                 bot.reply_to(message, f"✅ **ATTACK FINISHED!** ✅\n\n"
-                                      f"🎯 **Target:** `{target}"
-                                      f"🚀 **Port:** `{port}`"
-                                      f"⏳ **Duration:** `{time} seconds"
-                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7"
-                                      f"💪 *Mission Accomplished!* 🎯", 
+                                      f"🎯 **Target:** `{target}\n\n"
+                                      f"🚀 **Port:** `{port}`\n\n"
+                                      f"⏳ **Duration:** `{time} seconds\n\n"
+                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7\n\n"
+                                      f"💪 *Mission Accomplished!* 🎯\n\n", 
                                       parse_mode="Markdown")
         else:
             response = "✅Usage:- /bgmi <target> <port> <time>"
