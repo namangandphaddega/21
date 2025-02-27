@@ -229,7 +229,7 @@ def handle_bgmi(message):
                 # Stylish attack start message
                 bot.reply_to(message, f"🔥 **ATTACK STARTED!** 🔥\n\n"
                                       f"🎯 **Target:** `{target}`\n\n"
-                                      f"🚀 **Port:** `{port}`/n/n"
+                                      f"🚀 **Port:** `{port}`\n\n"
                                       f"⏳ **Duration:** `{time} seconds`\n\n"
                                       f"🛠️ **Method:** `VIP USER OF @SLAYER_OP7`\n\n", 
                                       parse_mode="Markdown")
